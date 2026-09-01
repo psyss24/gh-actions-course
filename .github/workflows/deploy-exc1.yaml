@@ -9,12 +9,12 @@ jobs:
       - name: install dependencies
         run: npm install
         working-directory: ./exc1
-      - name: npm run lint
-        run: npm lint
+      - name: run lint
+        run: npm run lint
         working-directory: ./exc1
       - name: run tests
         run: npm test
         working-directory: ./exc1
       - name: build project
-        run: npm build
+        run: npm run build
         working-directory: ./exc1
