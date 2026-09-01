@@ -18,7 +18,7 @@ jobs:
         working-directory: ./app
   deploy:
     runs-on: ubuntu-latest
-    jobs:
+    steps:
       - name: get code
         uses: actions/checkout@v3
       - name: install nodejs
