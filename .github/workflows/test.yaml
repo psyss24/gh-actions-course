@@ -17,6 +17,7 @@ jobs:
         run: npm test
         working-directory: ./app
   deploy:
+    needs: test
     runs-on: ubuntu-latest
     steps:
       - name: get code
@@ -27,7 +28,9 @@ jobs:
           node-version: 18
       - name: install dependancies
         run: npm install
+        working-directory: ./app
       - name: build project
         run: npm run build
+        working-directory: ./app
       - name: deploy
         run: echo deploy
