@@ -47,7 +47,7 @@ jobs:
         run: echo "script-file=$(find sect5_demo/dist/assets/*.js -type f)" >> $GITHUB_OUTPUT
         # run: find sect5_demo/dist/assets/*.js -type f -execdir echo '{}' >> $GITHUB_OUTPUT ';'
       - name: upload artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with: 
             name: dist-files
             path: ./sect5_demo/dist
@@ -57,7 +57,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: download build files
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: dist-files
       - name: output filename
