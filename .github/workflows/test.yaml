@@ -12,5 +12,7 @@ jobs:
           node-version: 18
       - name: install dependancies
         run: npm install
+        working-directory: ./app
       - name: run tests
         run: npm test
+        working-directory: ./app
