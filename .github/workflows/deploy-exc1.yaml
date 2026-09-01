@@ -13,6 +13,7 @@ jobs:
         run: npm run lint
         working-directory: ./exc1
   test:
+    need: lint
     runs-on: ubuntu-latest
     steps:
       - name: get code
@@ -24,6 +25,7 @@ jobs:
         run: npm test
         working-directory: ./exc1
   build:
+    need: test
     runs-on: ubuntu-latest
     steps:
       - name: get code
