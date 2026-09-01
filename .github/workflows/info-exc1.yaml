@@ -1,0 +1,8 @@
+name: info-exc1
+on: issues
+jobs:
+ output:
+  runs-on: ubuntu-latest
+  steps:
+    - name: output event details
+    run: echo ${{ github.event }}

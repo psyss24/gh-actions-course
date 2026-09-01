@@ -1,0 +1,15 @@
+name: deploy
+on: push
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: run lint
+        run: npm lint
+        working-directory: ./exc1
+      - name: run tests
+        run: npm test
+        working-directory: ./exc1
+      - name: build project
+        run: npm build
+        working-directory: ./exc1
