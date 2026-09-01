@@ -4,6 +4,8 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
+      - name: get code
+        run: actions/checkout@v3
       - name: install dependencies
         run: npm install
         working-directory: ./exc1
