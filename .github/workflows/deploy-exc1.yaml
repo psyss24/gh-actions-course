@@ -4,7 +4,10 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: run lint
+      - name: install dependencies
+        run: npm install
+        working-directory: ./exc1
+      - name: npm run lint
         run: npm lint
         working-directory: ./exc1
       - name: run tests
