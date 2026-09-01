@@ -16,10 +16,13 @@ jobs:
           key: deps-node-modules-${{hashFiles('sect5_demo/package.json')}}
       - name: Install dependencies
         run: npm ci
+        working-directory: /sect5_demo
       - name: Lint code
         run: npm run lint
+        working-directory: /sect5_demo
       - name: Test code
         run: npm run test
+        working-directory: /sect5_demo
   build:
     needs: test
     runs-on: ubuntu-latest
@@ -35,11 +38,14 @@ jobs:
           key: deps-node-modules-${{hashFiles('sect5_demo/package.json')}}
       - name: Install dependencies
         run: npm ci
+        working-directory: /sect5_demo
       - name: Build website
         run: npm run build
+        working-directory: /sect5_demo
       - name: publish js filname
         id: publish
-        run: find sect5_demo/dist/assets/*.js -type f -execdir echo '{}' >> $GITHUB_OUTPUT ';'
+        run: echo "script-file=$(find sect5_demo/dist/assets/*.js -type f)" >> $GITHUB_OUTPUT
+        # run: find sect5_demo/dist/assets/*.js -type f -execdir echo '{}' >> $GITHUB_OUTPUT ';'
       - name: upload artifacts
         uses: actions/upload-artifact@v3
         with: 
@@ -55,6 +61,6 @@ jobs:
         with:
           name: dist-files
       - name: output filename
-        run: echo {{$needs.builds.output.script-file}}
+        run: echo {{ $needs.build.outputs.script-file }}
       - name: Deploy
         run: echo "Deploying..."
