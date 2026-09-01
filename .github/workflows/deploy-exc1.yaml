@@ -1,7 +1,7 @@
-name: deploy
+name: deploy-exc1
 on: push
 jobs:
-  deploy:
+  lint:
     runs-on: ubuntu-latest
     steps:
       - name: get code
@@ -12,9 +12,25 @@ jobs:
       - name: run lint
         run: npm run lint
         working-directory: ./exc1
-      - name: run tests
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: get code
+        uses: actions/checkout@v3
+      - name: install dependencies
+        run: npm install
+        working-directory: ./exc1
+      - name: run test
         run: npm test
         working-directory: ./exc1
-      - name: build project
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: get code
+        uses: actions/checkout@v3
+      - name: install dependencies
+        run: npm install
+        working-directory: ./exc1
+      - name: run build
         run: npm run build
         working-directory: ./exc1
