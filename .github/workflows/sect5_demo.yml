@@ -13,16 +13,16 @@ jobs:
         uses: actions/cache@v3
         with:
           path: ~/.npm
-          key: deps-node-modules-${{hashFiles('sect5_demo/package.json')}}
+          key: deps-node-modules-${{hashFiles('sect5/package.json')}}
       - name: Install dependencies
         run: npm ci
-        working-directory: ./sect5_demo
+        working-directory: ./sect5
       - name: Lint code
         run: npm run lint
-        working-directory: ./sect5_demo
+        working-directory: ./sect5
       - name: Test code
         run: npm run test
-        working-directory: ./sect5_demo
+        working-directory: ./sect5
   build:
     needs: test
     runs-on: ubuntu-latest
@@ -35,22 +35,22 @@ jobs:
         uses: actions/cache@v3
         with:
           path: ~/.npm
-          key: deps-node-modules-${{hashFiles('sect5_demo/package.json')}}
+          key: deps-node-modules-${{hashFiles('sect5/package.json')}}
       - name: Install dependencies
         run: npm ci
-        working-directory: ./sect5_demo
+        working-directory: ./sect5
       - name: Build website
         run: npm run build
-        working-directory: ./sect5_demo
+        working-directory: ./sect5
       - name: publish js filname
         id: publish
-        run: echo "script-file=$(find sect5_demo/dist/assets/*.js -type f)" >> $GITHUB_OUTPUT
-        # run: find sect5_demo/dist/assets/*.js -type f -execdir echo '{}' >> $GITHUB_OUTPUT ';'
+        run: echo "script-file=$(find sect5/dist/assets/*.js -type f)" >> $GITHUB_OUTPUT
+        # run: find sect5/dist/assets/*.js -type f -execdir echo '{}' >> $GITHUB_OUTPUT ';'
       - name: upload artifacts
         uses: actions/upload-artifact@v4
         with: 
             name: dist-files
-            path: ./sect5_demo/dist
+            path: ./sect5/dist
       
   deploy:
     needs: build
