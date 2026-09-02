@@ -1,38 +1,38 @@
-# name: deploy-exc1
-# on: push
-# jobs:
-#   lint:
-#     runs-on: ubuntu-latest
-#     steps:
-#       - name: get code
-#         uses: actions/checkout@v3
-#       - name: install dependencies
-#         run: npm install
-#         working-directory: ./exc1
-#       - name: run lint
-#         run: npm run lint
-#         working-directory: ./exc1
-#   test:
-#     needs: lint
-#     runs-on: ubuntu-latest
-#     steps:
-#       - name: get code
-#         uses: actions/checkout@v3
-#       - name: install dependencies
-#         run: npm install
-#         working-directory: ./exc1
-#       - name: run test
-#         run: npm test
-#         working-directory: ./exc1
-#   build:
-#     needs: test
-#     runs-on: ubuntu-latest
-#     steps:
-#       - name: get code
-#         uses: actions/checkout@v3
-#       - name: install dependencies
-#         run: npm install
-#         working-directory: ./exc1
-#       - name: run build
-#         run: npm run build
-#         working-directory: ./exc1
+name: deploy-sect3
+on: push
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: get code
+        uses: actions/checkout@v3
+      - name: install dependencies
+        run: npm install
+        working-directory: ./sect3
+      - name: run lint
+        run: npm run lint
+        working-directory: ./sect3
+  test:
+    needs: lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: get code
+        uses: actions/checkout@v3
+      - name: install dependencies
+        run: npm install
+        working-directory: ./sect3
+      - name: run test
+        run: npm test
+        working-directory: ./sect3
+  build:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: get code
+        uses: actions/checkout@v3
+      - name: install dependencies
+        run: npm install
+        working-directory: ./sect3
+      - name: run build
+        run: npm run build
+        working-directory: ./sect3
