@@ -18,7 +18,9 @@ jobs:
       - name: Install dependencies
         if: steps.cache.outputs.cache-hit != 'true'
         run: npm ci
+        working-directory: ./sect7
       - name: Lint code
+        working-directory: ./sect7
         run: npm run lint
   test:
     runs-on: ubuntu-latest
@@ -34,8 +36,10 @@ jobs:
       - name: Install dependencies
         if: steps.cache.outputs.cache-hit != 'true'
         run: npm ci
+        working-directory: ./sect7
       - name: Test code
         run: npm run test
+        working-directory: ./sect7
         id: test-step
       - name: Upload test report
         if: steps.test-step.outcome == 'failure'
@@ -58,9 +62,11 @@ jobs:
       - name: Install dependencies
         if: steps.cache.outputs.cache-hit != 'true'
         run: npm ci
+        working-directory: ./sect7
       - name: Build website
         id: build-website
         run: npm run build
+        working-directory: ./sect7
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
